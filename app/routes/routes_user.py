@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, abort, request, make_response
 from app import db
 from .routes_helper import validate_id, validate_input
 from app.models.checkmateuser import Checkmateuser
-from app.models.med import Med
+ls.med import Med
 
 user_bp = Blueprint("user_bp", __name__, url_prefix="/checkmateusers")
 
@@ -52,6 +52,8 @@ def get_all_meds_belonging_to_user(user_id):
     user = validate_id(Checkmateuser, user_id) 
 
     med_response = [med.to_dict() for med in user.meds]
+    if len(med_response) == 0:
+        return jsonify(""), 200
 
     return jsonify(med_response), 200
 
