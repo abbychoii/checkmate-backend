@@ -4,7 +4,7 @@ from .routes_helper import validate_id, validate_input
 from app.models.checkmateuser import Checkmateuser
 from app.models.med import Med
 
-user_bp = Blueprint("user_bp", __name__, url_prefix="/users")
+user_bp = Blueprint("user_bp", __name__, url_prefix="/checkmateusers")
 
 @user_bp.route("",methods=["GET"])
 def get_all_users():
